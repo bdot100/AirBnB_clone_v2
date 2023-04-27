@@ -93,7 +93,8 @@ class TestHBNBCommand(unittest.TestCase):
     def test_create_kwargs(self):
         with patch("sys.stdout", new=StringIO()) as test:
             self.HBNB.onecmd(
-                'create User first_name="John" email="john@example.com password="1234"')
+                'create User first_name="J" email="j@mail.com password="1234"'
+                )
             new_user = test.getvalue().strip()
         with patch("sys.stdout", new=StringIO()) as test:
             self.HBNB.onecmd("all User")
