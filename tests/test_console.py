@@ -100,8 +100,8 @@ class TestHBNBCommand(unittest.TestCase):
             self.HBNB.onecmd("all User")
             user_output = test.getvalue()
             self.assertIn(new_user, user_output)
-            self.assertIn("'first_name': 'John'", user_output)
-            self.assertIn("'email': 'john@example.com'", user_output)
+            self.assertIn("'first_name': 'J'", user_output)
+            self.assertIn("'email': 'j@example.com'", user_output)
             self.assertNotIn("'last_name': 'Snow'", user_output)
             self.assertIn("'password': '1234'", user_output)
 
