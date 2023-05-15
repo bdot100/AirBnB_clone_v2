@@ -3,7 +3,7 @@
 
 
 # Check if Nginx is not installed and install it
-if [ $(dpkg-query -W -f='${Status}' nginx 2>/dev/null | grep -c "ok installed") -eq 0 ]; then
+if [ $(dpkg-query -W -f="${Status}" nginx 2>/dev/null | grep -c "ok installed") -eq 0 ]; then
     sudo apt-get -y update
     sudo apt-get -y install nginx
     sudo ufw allow 'Nginx HTTP'
