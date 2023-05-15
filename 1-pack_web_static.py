@@ -1,6 +1,6 @@
 #!/usr/bin/python3
-"""generates a .tgz archive from the contents 
-    of the web_static folder"""
+"""generates a .tgz archive from the contents
+of the web_static folder"""
 from fabric.api import local
 from datetime import datetime
 
@@ -13,7 +13,8 @@ def do_pack():
 
     # Generate the name of the archive
     time_format = "%Y%m%d%H%M%S"
-    archive_name = "web_static_" + datetime.now().strftime(time_format) + ".tgz"
+    archive_name = "web_static_" + datetime.now()
+                    .strftime(time_format) + ".tgz"
 
     # Create the path to the archive
     archive_path = "versions/" + archive_name
