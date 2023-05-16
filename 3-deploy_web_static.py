@@ -8,7 +8,7 @@ from datetime import datetime
 from os.path import exists
 
 # Declear env.hosts
-env.hosts = ['ubuntu@35.174.204.79', 'ubuntu@34.227.91.64']  # <IP web-01>, <IP web-02>
+env.hosts = ['ubuntu@35.174.204.79', 'ubuntu@34.227.91.64']
 
 
 def do_pack():
