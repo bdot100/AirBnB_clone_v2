@@ -6,7 +6,12 @@
     Routes: /c/<text>, display “C ” followed by the value
     of the text variable (replace underscore _ symbols with
     a space )
-    using the option strict_slashes=False in our route definition 
+    Routes: /python/(<text>): display “Python ”, followed
+            by the value of the text variable 
+            (replace underscore _ symbols with a space )
+            The default value of text is “is cool”
+    We must use the option strict_slashes=False in our route
+    definition 
 """
 from flask import Flask
 app = Flask(__name__)
@@ -32,6 +37,22 @@ def print_ctext(text):
     """
     text = text.replace('_', ' ')
     return ('C' + ' ' + text)
+
+
+@app.route('/python/(<text>)', strict_slashes=False)
+@app.route('/python/', strict_slashes=False)
+@app.route('/python', strict_slashes=False)
+@app.route('/python/<path:text>', strict_slashes=False)
+def print_pythontext(text=None):
+    """display “Python ” followed by the value
+    of the text variable (replace 
+    underscore _ symbols with a space )
+    """
+    if text is None:
+        text = 'is cool'
+    else:
+        text = text.replace('_', ' ')
+    return ('Python' + ' ' + text)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
