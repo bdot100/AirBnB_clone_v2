@@ -59,7 +59,7 @@ def print_pythontext(text=None):
 
 @app.route('/number/<int:n>', strict_slashes=False)
 def print_number(n):
-    """  number_int method: display “n is a number” only if n is an integer """
+    """display “n is a number” only if n is an integer"""
     return ('{:d} is a number'.format(n))
 
 if __name__ == '__main__':
