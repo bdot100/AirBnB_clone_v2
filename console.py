@@ -123,23 +123,23 @@ class HBNBCommand(cmd.Cmd):
         if class_name not in HBNBCommand.classes:
             print("** class doesn't exist **")
             return
-        
+   
         new_instance = HBNBCommand.classes[class_name]()
-        
+
         for arg in arg_list[1:]:
             param = arg.split('=')
             key = param[0]
             value = param[1]
-            
+
             if value[0] == '\"':
                 value = value.replace('\"', '').replace('_', ' ')
             elif '.' in value:
                 value = float(value)
             else:
                 value = int(value)
-                
+
             setattr(new_instance, key, value)
-        
+
         new_instance.save()
         print(new_instance.id)
 
