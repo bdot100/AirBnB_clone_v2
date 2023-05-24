@@ -12,6 +12,13 @@ from models.state import State
 from models.user import User
 
 
+classes = {
+    'BaseModel': BaseModel, 'User': User, 'Place': Place,
+    'State': State, 'City': City, 'Amenity': Amenity,
+    'Review': Review
+}
+
+
 class DBStorage:
     """ DBStorage Engine Class """
     __engine = None
@@ -64,6 +71,7 @@ class DBStorage:
         """deletes from the current database session obj if not None"""
         if obj:
             self.__session.delete(obj)
+            self.save()
     
     def reload(self):
         """ creates all tables in the database (feature of SQLAlchemy
@@ -72,3 +80,8 @@ class DBStorage:
         Base.metadata.create_all(self.__engine)
         Session = scoped_session(sessionmaker(bind=self.__engine, expire_on_commit=False))
         self.__session = Session()
+        
+    def close(self):
+        """ close method """
+        if self.__session:
+            self.__session.close()
