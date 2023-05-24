@@ -58,7 +58,7 @@ class Place(BaseModel, Base):
                 if (elem.place_id == self.id):
                     result.append(elem)
             return (result)
-        
+
         @property
         def amenities(self):
             """ Returns list of amenity ids """
