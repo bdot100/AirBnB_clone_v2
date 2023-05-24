@@ -23,7 +23,7 @@ class DBStorage:
     """ DBStorage Engine Class """
     __engine = None
     __session = None
-    
+
     def __init__(self) -> None:
         """ Creates the engine by linking to mysql DB
         and user """
@@ -35,7 +35,7 @@ class DBStorage:
                                       pool_pre_ping=True)
         if getenv('HBNB_ENV') == 'test':
             Base.metadata.drop_all(bind=self.__engine)
-            
+
     def all(self, cls=None):
         """ queries on the current database session (self.__session)
         all objects depending of the class name (argument cls)"""
@@ -58,29 +58,32 @@ class DBStorage:
             obj_dict[key] = obj
 
         return obj_dict
-    
+
     def new(self, obj):
-        """ adds the object to the current database session (self.__session) """
+        """ adds the object to the current
+        database session (self.__session) """
         self.__session.add(obj)
 
     def save(self):
-        """ commits all changes of the current database session (self.__session) """
+        """ commits all changes of the current
+        database session (self.__session) """
         self.__session.commit()
-        
+
     def delete(self, obj=None):
         """deletes from the current database session obj if not None"""
         if obj:
             self.__session.delete(obj)
             self.save()
-    
+
     def reload(self):
         """ creates all tables in the database (feature of SQLAlchemy
-        ) (WARNING: all classes who inherit from Base must be 
+        ) (WARNING: all classes who inherit from Base must be
         imported before calling """
         Base.metadata.create_all(self.__engine)
-        Session = scoped_session(sessionmaker(bind=self.__engine, expire_on_commit=False))
+        Session = scoped_session(
+            sessionmaker(bind=self.__engine, expire_on_commit=False))
         self.__session = Session()
-        
+
     def close(self):
         """ close method """
         if self.__session:
