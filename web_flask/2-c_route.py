@@ -7,7 +7,7 @@
     of the text variable (replace underscore _ symbols with
     a space )
     using the option strict_slashes=False in our route
-    definition 
+    definition
 """
 from flask import Flask
 app = Flask(__name__)
@@ -28,7 +28,7 @@ def print_hbnb():
 @app.route('/c/<text>', strict_slashes=False)
 def print_ctext(text):
     """display “C ” followed by the value
-    of the text variable (replace 
+    of the text variable (replace
     underscore _ symbols with a space )
     """
     text = text.replace('_', ' ')

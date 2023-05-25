@@ -1,23 +1,23 @@
 #!/usr/bin/python3
 """ This script starts a Flask web application:
     web application is listening on 0.0.0.0, port 5000
-    Routes: 
+    Routes:
     /: display “Hello HBNB!”
     /hbnb displays "HBNB"
     /c/<text>: display “C ” followed by the value
     of the text variable (replace underscore _ symbols with
     a space )
     /python/(<text>): display “Python ”, followed
-            by the value of the text variable 
+            by the value of the text variable
             (replace underscore _ symbols with a space )
             The default value of text is “is cool”
     /number/<n>: display “n is a number” only if n is an integer
-    /number_template/<n>: display a HTML page only if n is an 
+    /number_template/<n>: display a HTML page only if n is an
     integer: H1 tag: “Number: n” inside the tag BODY
     /number_odd_or_even/<n>: display a HTML page only if n is an integer:
     H1 tag: “Number: n is even|odd” inside the tag BODY
     We must use the option strict_slashes=False in our route
-    definition 
+    definition
 """
 from flask import Flask, render_template
 app = Flask(__name__)
@@ -38,7 +38,7 @@ def print_hbnb():
 @app.route('/c/<text>', strict_slashes=False)
 def print_ctext(text):
     """display “C ” followed by the value
-    of the text variable (replace 
+    of the text variable (replace
     underscore _ symbols with a space )
     """
     text = text.replace('_', ' ')
@@ -51,7 +51,7 @@ def print_ctext(text):
 @app.route('/python/<path:text>', strict_slashes=False)
 def print_pythontext(text=None):
     """display “Python ” followed by the value
-    of the text variable (replace 
+    of the text variable (replace
     underscore _ symbols with a space )
     """
     if text is None:
