@@ -175,7 +175,5 @@ class Test_Console_help(unittest.TestCase):
             testKey = "State.{}".format(output.getvalue().strip())
             self.assertIn(testKey, storage.all().keys())
 
-
-
 if __name__ == "__main__":
     unittest.main()
