@@ -12,13 +12,16 @@ from models.city import City
 class State(BaseModel, Base):
     """ State class """
     __tablename__ = "states"
-    name = Column(String(128), nullable=False)
-    cities = relationship("City", backref="state", cascade="delete")
 
-    if os.getenv('HBNB_TYPE_STORAGE') != "db":
+    if os.getenv('HBNB_TYPE_STORAGE') == "db":
+        name = Column(String(128), nullable=False)
+        cities = relationship("City", backref="state", cascade="all, delete")
+    else:
+        name = ""
+        
         @property
         def cities(self):
-            """ cities getter attribute """
+            """ This method get cities """
             city_list = []
             all_cities = models.storage.all(City)
             for city in all_cities.values():
