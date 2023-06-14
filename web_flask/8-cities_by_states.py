@@ -18,7 +18,7 @@ classes = {"Amenity": Amenity, "City": City,
 
 @app.route('/cities_by_states', strict_slashes=False)
 def cities_by_states():
-    """ display HTML page with list of cities """
+    """ display HTML page with list of all cities """
     states = storage.all(classes["State"]).values()
     # ^ fetches states data from storage engine, then in line below,
     # those states are passed into the template
